@@ -5,16 +5,16 @@ import { v4 as uuidv4 } from "uuid";
 
 const page = () => {
   const [roomId, setRoomId] = useState("");
-
   const router = useRouter();
+
   const createAndJoinRoom = async () => {
     const roomId = uuidv4();
-    router.push(`/webrtc/${roomId}`);
+    router.push(`/${roomId}`);
   };
 
   const joinRoom = () => {
     if (roomId) {
-      router.push(`/webrtc/${roomId}`);
+      router.push(`/${roomId}`);
     } else {
       alert("Please enter a room id");
     }
