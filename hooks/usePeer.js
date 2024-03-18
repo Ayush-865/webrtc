@@ -1,11 +1,11 @@
 "use client";
 import { useSocket } from "@/context/webrtc/socket";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const usePeer = () => {
   const socket = useSocket();
-  const roomId = useRouter().query.roomId;
+  const roomId = window.location.pathname.split("/")[2];
   const [peer, setPeer] = useState(null);
   const [myId, setMyId] = useState(null);
   const isPeerSet = useRef(false);
@@ -18,7 +18,7 @@ const usePeer = () => {
       setPeer(myPeer);
 
       myPeer.on("open", (id) => {
-        console.log("peer open", id);
+        console.log("your peer id is: ", id);
         setMyId(id);
         socket?.emit("join-room", roomId, id);
       });

@@ -9,12 +9,12 @@ const page = () => {
 
   const createAndJoinRoom = async () => {
     const roomId = uuidv4();
-    router.push(`/${roomId}`);
+    router.push(`/webrtc/${roomId}`);
   };
 
   const joinRoom = () => {
     if (roomId) {
-      router.push(`/${roomId}`);
+      router.push(`/webrtc/${roomId}`);
     } else {
       alert("Please enter a room id");
     }
